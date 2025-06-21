@@ -22,8 +22,8 @@ export class CreateTechnologyDto {
 
   @IsOptional()
   @IsString()
-  @MaxLength(255, {
-    message: 'La URL del icono no puede exceder 255 caracteres',
+  @MaxLength(10000, {
+    message: 'El contenido del icono no puede exceder 10000 caracteres',
   })
   icon?: string;
 
@@ -33,9 +33,12 @@ export class CreateTechnologyDto {
 
   @IsOptional()
   @IsString()
-  @IsIn(['frontend', 'backend', 'database', 'devops', 'mobile', 'other'], {
-    message:
-      'La categoría debe ser: frontend, backend, database, devops, mobile u other',
-  })
+  @IsIn(
+    ['Frontend', 'Backend', 'Database', 'Tools', 'DevOps', 'Mobile', 'Other'],
+    {
+      message:
+        'La categoría debe ser: Frontend, Backend, Database, Tools, DevOps, Mobile u Other',
+    },
+  )
   category?: string;
 }

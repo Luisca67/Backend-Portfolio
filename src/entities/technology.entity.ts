@@ -20,7 +20,7 @@ export class Technology {
   @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column({ length: 255, nullable: true })
+  @Column({ type: 'text', nullable: true })
   icon: string;
 
   @Column({ default: true })

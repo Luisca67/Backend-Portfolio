@@ -10,7 +10,9 @@ import {
   HttpCode,
   HttpStatus,
   Query,
+  Res,
 } from '@nestjs/common';
+import { Response } from 'express';
 import { TechnologyService } from '../services/technology.service';
 import {
   CreateTechnologyDto,
@@ -42,6 +44,22 @@ export class TechnologyController {
       throw new Error('Technology not found');
     }
     return new TechnologyResponseDto(technology);
+  }
+
+  @Get(':id/icon')
+  async getIcon(
+    @Param('id', ParseIntPipe) id: number,
+    @Res() res: Response,
+  ): Promise<void> {
+    const technology = await this.technologyService.findOne(id);
+    if (!technology) {
+      res.status(404).json({ message: 'Technology not found' });
+      return;
+    }
+
+    res.setHeader('Content-Type', 'image/svg+xml');
+    res.setHeader('Cache-Control', 'public, max-age=31536000'); // Cache por 1 año
+    res.send(technology.icon);
   }
 
   @Post()

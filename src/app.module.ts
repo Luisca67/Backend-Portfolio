@@ -19,11 +19,12 @@ import { CommentController } from './controllers/comment.controller';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
+      connectTimeoutMS: 20000, // 20 segundos
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '5432'),
       username: process.env.DB_USERNAME || 'postgres',
       password: process.env.DB_PASSWORD || 'password',
-      database: process.env.DB_NAME || 'portfolio_db',
+      database: process.env.DB_NAME || 'web',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: process.env.NODE_ENV !== 'production', // Solo en desarrollo
       logging: process.env.NODE_ENV !== 'production',
