@@ -6,6 +6,15 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Habilitar CORS para Vercel y localhost
+  app.enableCors({
+    origin: [
+      'https://portfolio-luis-cabrera.vercel.app',
+      'http://localhost:3000',
+    ],
+    credentials: true,
+  });
+
   // Configurar validación global
   app.useGlobalPipes(
     new ValidationPipe({
