@@ -10,6 +10,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://portfolio-luis-cabrera.vercel.app',
+      'https://portfolio-luis-cabrera-b8acrinnt.vercel.app', // <-- AGREGA ESTE
       'http://localhost:3000',
     ],
     credentials: true,
