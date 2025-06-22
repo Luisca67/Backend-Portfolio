@@ -9,9 +9,9 @@ if (Test-Path ".env") {
         }
     }
 }
+$apiBaseUrl = $env:DB_HOST
 
 # Usar API_BASE_URL para la URL base de la API REST
-$apiBaseUrl = $env:DB_HOST
 if (-not $apiBaseUrl -or $apiBaseUrl -eq "") {
     $apiBaseUrl = "http://localhost:3000"
 }

@@ -20,9 +20,6 @@ export class CommentResponseDto {
   rating: number;
 
   @Expose()
-  project_id: number;
-
-  @Expose()
   createdAt: Date;
 
   @Expose()

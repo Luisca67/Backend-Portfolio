@@ -34,14 +34,6 @@ export class CommentController {
     return comments.map((comment) => new CommentResponseDto(comment));
   }
 
-  @Get('project/:projectId')
-  async findByProject(
-    @Param('projectId', ParseIntPipe) projectId: number,
-  ): Promise<CommentResponseDto[]> {
-    const comments = await this.commentService.findByProject(projectId);
-    return comments.map((comment) => new CommentResponseDto(comment));
-  }
-
   @Get(':id')
   async findOne(
     @Param('id', ParseIntPipe) id: number,

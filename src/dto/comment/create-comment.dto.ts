@@ -43,7 +43,4 @@ export class CreateCommentDto {
   @Min(1, { message: 'La calificación debe ser entre 1 y 5' })
   @Max(5, { message: 'La calificación debe ser entre 1 y 5' })
   rating?: number;
-
-  @IsNumber()
-  project_id: number;
 }

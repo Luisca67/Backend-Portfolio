@@ -7,7 +7,6 @@ import {
   MaxLength,
   IsUrl,
   Min,
-  Max,
   IsArray,
 } from 'class-validator';
 

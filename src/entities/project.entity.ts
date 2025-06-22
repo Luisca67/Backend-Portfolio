@@ -5,10 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
-  OneToMany,
 } from 'typeorm';
 import { Technology } from './technology.entity';
-import { Comment } from './comment.entity';
 
 @Entity('projects')
 export class Project {
@@ -28,7 +26,7 @@ export class Project {
   github_url: string;
 
   @Column({ length: 500, nullable: true })
-  live_url: string;
+  live_url?: string;
 
   @Column({ default: true })
   is_active: boolean;
@@ -38,9 +36,6 @@ export class Project {
 
   @ManyToMany(() => Technology, (technology) => technology.projects)
   technologies: Technology[];
-
-  @OneToMany(() => Comment, (comment) => comment.project)
-  comments: Comment[];
 
   @CreateDateColumn()
   createdAt: Date;

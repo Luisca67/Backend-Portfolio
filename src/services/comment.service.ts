@@ -25,13 +25,6 @@ export class CommentService {
     });
   }
 
-  async findByProject(projectId: number): Promise<Comment[]> {
-    return this.commentRepository.find({
-      where: { project_id: projectId, is_approved: true },
-      order: { createdAt: 'DESC' },
-    });
-  }
-
   async findPendingApproval(): Promise<Comment[]> {
     return this.commentRepository.find({
       where: { is_approved: false },

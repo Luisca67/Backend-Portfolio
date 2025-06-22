@@ -4,10 +4,7 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
-import { Project } from './project.entity';
 
 @Entity('comments')
 export class Comment {
@@ -28,15 +25,6 @@ export class Comment {
 
   @Column({ type: 'int', nullable: true })
   rating: number; // 1-5 stars
-
-  @ManyToOne(() => Project, (project) => project.comments, {
-    onDelete: 'CASCADE',
-  })
-  @JoinColumn({ name: 'project_id' })
-  project: Project;
-
-  @Column()
-  project_id: number;
 
   @CreateDateColumn()
   createdAt: Date;
